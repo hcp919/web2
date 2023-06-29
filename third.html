@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./nav.css">
+    <title>myHome</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            background-color: #efedd6;
+            font-family: 'sans-serif';
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .box {
+            /* background-color: aqua;
+            color:aliceblue; */
+            width: 500px;
+            height: 300px;
+            border-radius: 10px;
+            margin: 10px;
+            text-align: center;
+            line-height: 200px;
+            box-shadow: 2px 4px 5px rgba(0,0,0,0.3);
+            transform: translateX(400%);
+            transition: transform 0.4s ease-in-out 0s;
+        }
+        .box img{
+            width: 500px;
+            height: 300px;
+            border-radius: 10px;
+        }
+        .box:nth-of-type(even){
+            transform: translateX(-400%);
+        }
+        .box.show{
+            transform: translateX(0);
+        }
+        .box h2{
+            font-size: 45px;
+        } 
+    </style>
+</head>
+<body>
+    <header>
+        <div><h1>My Hometown</h1></div>
+        <nav>
+            <ul id="hnav">
+                <li class="hnl"><a href="second.html">位置</a></li>
+                <li class="hnl"><a href="first.html">风景</a></li>
+                <li class="hnl" id="current"><a href="third.html">美食</a></li>
+                <li class="hnl"><a href="forth.html">报告</a></li>
+                <div class="slider"></div>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>请向下滚动开始浏览😘</h1>
+        <div class="box"><img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.BX18gCaoCJK2oXpR2OlNSgHaE7?w=292&h=194&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt=""></div>
+        <div class="box"><img src="https://tse3-mm.cn.bing.net/th/id/OIP-C.mnCRNVQ0nc0h5lgjP2DMyAHaDF?w=299&h=145&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt=""></div>
+        <div class="box"><img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.Ybq-GM8v_OcSLLl0FddWIgHaFj?w=260&h=194&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt=""></div>
+        <div class="box"><img src="https://tse3-mm.cn.bing.net/th/id/OIP-C.3Bqnbn8RO7ttsRP8_MN-qgHaEZ?w=260&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt=""></div>
+        <div class="box"><img src="https://tse3-mm.cn.bing.net/th/id/OIP-C.wnSKjEAdRwO-cdQuO5OV6AHaEs?w=257&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt=""></div>
+        <div class="box"><img src="https://tse3-mm.cn.bing.net/th/id/OIP-C.Diftp2GFSekFiAwDOpuLCAHaE0?w=270&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt=""></div>
+        <div class="box"><img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.ndNsKK6ZcfSqf1BXmMmLXAAAAA?w=193&h=194&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt=""></div>
+        <div class="box"><img src="https://tse4-mm.cn.bing.net/th/id/OIP-C.YsfPtjU7D6vy7CX_MebEjwHaE7?w=234&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt=""></div>
+        <div class="box"><img src="https://tse3-mm.cn.bing.net/th/id/OIP-C.GKgkohRmgEUm_095_rk-VQHaE7?w=243&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt=""></div>
+        <div class="box"><img src="https://tse3-mm.cn.bing.net/th/id/OIP-C.i1n-HzUamVS9nItGJntRrQHaE-?w=253&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt=""></div>
+        <div class="box"><img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.ZeKSM0H-b3HlJafZ_njaIwHaFj?w=238&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt=""></div>
+    </div>
+    <script>
+        const boxes = document.querySelectorAll('.box');
+        window.addEventListener('scroll',()=>{
+            const trigger = window.innerHeight*4/5;
+            boxes.forEach(box=>{
+                const boxTop = box.getBoundingClientRect().top;
+                if(boxTop<trigger)box.classList.add('show');
+                else box.classList.remove('show');
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./nav.css">
+  <title>myHome</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      list-style: none;
+    }
+
+    #banner {
+      margin: 0;
+      width: 800px;
+      height: 600px;
+      border: 2px solid #999;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #imglist {
+      display: flex;
+      width: 4000px;
+      height: 600px;
+    }
+
+    #imglist img {
+      width: 800px;
+      height: 600px;
+    }
+
+    #imglist .ll {
+      float: left;
+      display: flex;
+      flex-shrink: 1;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .prev {
+      background: #666;
+      width: 30px;
+      height: 40px;
+      color: #fff;
+      text-align: center;
+      line-height: 40px;
+      position: absolute;
+      left: 5px;
+      top: 45%;
+      cursor: pointer;
+    }
+
+    .next {
+      background: #666;
+      width: 30px;
+      height: 40px;
+      color: #fff;
+      text-align: center;
+      line-height: 40px;
+      position: absolute;
+      right: 5px;
+      top: 45%;
+      cursor: pointer;
+    }
+
+    #icolist {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+
+    #icolist li {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #666;
+      text-align: center;
+      line-height: 30px;
+      color: #fff;
+      float: left;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+
+    .lbt {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+    }
+
+    @media (max-width: 768px) {
+      .ll {
+        width: 800px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div>
+      <h1>My Hometown</h1>
+    </div>
+    <nav>
+      <ul id="hnav">
+        <li class="hnl"><a href="second.html">位置</a></li>
+        <li class="hnl" id="current"><a href="first.html">风景</a></li>
+        <li class="hnl"><a href="third.html">美食</a></li>
+        <li class="hnl"><a href="forth.html">报告</a></li>
+        <div class="slider"></div>
+      </ul>
+    </nav>
+  </header>
+  <div class="lbt">
+    <div id="banner">
+      <ul id="imglist">
+        <li class="ll"><img src="./img/img1.jfif" alt=""></li>
+        <li class="ll"><img src="./img/img2.jfif" alt=""></li>
+        <li class="ll"><img src="./img/img3.jfif" alt=""></li>
+        <li class="ll"><img src="./img/img4.jfif" alt=""></li>
+        <li class="ll"><img src="./img/img1.jfif" alt=""></li>
+      </ul>
+      <ul id="icolist">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+      </ul>
+      <div class="prev">《</div>
+      <div class="next">》</div>
+    </div>
+  </div>
+
+  <script>
+    var eprve = document.querySelector('.prev');
+    var exext = document.querySelector('.next');
+    var esico = document.getElementById('icolist').getElementsByTagName('li');
+    var eiclist = document.querySelector('#icolist');
+    var eimglist = document.querySelector('#imglist');
+    var left = 0;
+    var timer;
+    run();
+    function run() {
+      if (left <= -3200) {
+        left = 0;
+      }
+      var m = Math.floor(-left / 800);
+      imglist.style.marginLeft = left + "px";
+      var n = (left % 800 == 0) ? n = 1200 : n = 10;
+      left -= 10;
+      timer = setTimeout(run, n);
+      icochange(m);
+    }
+    //图片定位函数
+    function imgchange(n) {
+      let lt = - (n * 800);
+      imglist.style.marginLeft = lt + 'px';
+      left = lt;
+    }
+    eprve.onclick = function () {
+      let pre = Math.floor(-left / 800) - 1;
+      if (pre == -1) pre = 3;
+      imgchange(pre);
+    }
+    exext.onclick = function () {
+      let nex = Math.floor(-left / 800) + 1;
+      if (nex == 4) nex = 0;
+      imgchange(nex);
+    }
+    function icochange(m) {
+      for (let i = 0; i < esico.length; i++) {
+        esico[i].style.backgroundColor = '';
+      }
+      if (m < esico.length) {
+        esico[m].style.backgroundColor = 'red';
+      }
+    }
+    eiclist.onclick = function () {
+      var tg = event.target;
+      let ico = tg.innerHTML - 1;
+      imgchange(ico);
+      icochange(ico);
+    }
+    eimglist.onmouseover = function () {
+      clearTimeout(timer);
+    }
+    eimglist.onmouseout = function () {
+      run();
+    }
+  </script>
+</body>
+
+</html>

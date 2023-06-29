@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="form-container">
+            <p class="title">Login</p>
+            <form class="form">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" value="" />
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" value="" />
+                    <div class="forgot">
+                        <a rel="noopener noreferrer" href="#">Forgot Password ?</a>
+                    </div>
+                </div>
+                <a href="second.html" class="signin">Sign in</a>
+            </form>
+            <p class="signup">Don't have an account?
+                <a rel="noopener noreferrer" href="#" class="">Sign up</a>
+            </p>
+        </div>
+    </div>
+    <!-- <script>
+        // 1 引入
+        const mysql = require('mysql');
+        alert("aa");
+        // 2 创建链接配置
+        const conn = mysql.createConnection({
+            host: 'localhost',// 主机名 （服务器地址）
+            port: '3306', //端口号
+            user: 'root',    //用户名
+            password: 'wo20031014',    // 密码
+            database: 'web'  // 写上自己要连接的数据库名字
+        })
+        // 3 建立链接
+        conn.connect((err) => {
+            if (err) {
+                throw (err);
+            }
+            console.log('数据库连接成功！')
+        })
+        var btn = document.querySelector('.btn');
+        btn.onclick = function () {
+            alert("hh");
+            const usernamess = document.getElementById('username').value;
+            const passwordss = document.getElementById('password').value;
+            alert(usernamess);
+            alert(passwordss);
+            // 4 生成sql语句 增删改查操作
+            let sql = 'select * from users';
+            //5  执行sql语句
+            conn.query(sql, (err, result) => {
+                if (err) {
+                    console.log(err);
+                    return
+                }
+                // 6 处理结果
+                if (result) {
+                    for (var i = 0; i < result.length; i++) {
+                        if (b == result[i].usernames && a == result[i].passwords) {
+                            console.log("登录成功");
+                            // window.location("./first.html");
+                            return;
+                        }
+                    }
+                    console.log("用户名或密码错误");
+                }
+            })
+        }
+    </script> -->
+</body>
+
+</html>
